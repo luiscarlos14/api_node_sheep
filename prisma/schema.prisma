@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  email      String   @unique
+  name       String
+  surname    String
+  farmName   String
+  password   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  sheep    Sheep[]    @relation("user")
+  vaccines Vaccines[] @relation("user")
+
+  @@map("users")
+}
+
+model Sheep {
+  id         String   @id @default(uuid())
+  identifier Int
+  name       String?
+  userID     String
+  user       User     @relation("user", fields: [userID], references: [id])
+  race       String
+  female     Boolean  @default(true)
+  birth      DateTime
+  alive      Boolean
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  affiliation_sheep Affiliation[] @relation("sheep")
+  mother_sheep      Affiliation[] @relation("mother")
+  haggard           Haggard[]     @relation("sheep")
+  vaccines          Vaccines[]    @relation("sheep")
+
+  @@map("sheep")
+}
+
+model Affiliation {
+  id         String   @id @default(uuid())
+  sheepID    String
+  sheep      Sheep    @relation("sheep", fields: [sheepID], references: [id])
+  motherID   String
+  mother     Sheep    @relation("mother", fields: [motherID], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("affiliation")
+}
+
+model Vaccines {
+  id          String   @id @default(uuid())
+  userID      String
+  user        User     @relation("user", fields: [userID], references: [id])
+  sheepID     String?
+  sheep       Sheep?   @relation("sheep", fields: [sheepID], references: [id])
+  name        String
+  indications String
+  dosage      Float
+  date        DateTime
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  @@map("vaccines")
+}
+
+model Haggard {
+  id         String   @id @default(uuid())
+  sheepID    String
+  sheep      Sheep    @relation("sheep", fields: [sheepID], references: [id])
+  date       DateTime
+  weight     Float
+  price      Float
+  soldAmount Float
+  profit     Float
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("haggard")
+}
