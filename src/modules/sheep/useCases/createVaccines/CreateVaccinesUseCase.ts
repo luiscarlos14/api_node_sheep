@@ -1,5 +1,5 @@
 import { prisma } from "../../../../prisma/client";
-import { CreateVaccinesDTO } from "../../dtos/CreateVaccinesDTO";
+import { CreateVaccinesDTO } from "../../dtos/VaccinesDTO";
 
 import { Vaccines } from "@prisma/client";
 

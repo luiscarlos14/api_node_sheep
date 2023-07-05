@@ -6,3 +6,11 @@ export interface CreateVaccinesDTO{
     dosage: number;
     date: string;
 }
+
+export interface UpdateVaccinesDTO{
+    id: string;
+    name: string;
+    indications: string;
+    dosage: number;
+    date: string;
+}

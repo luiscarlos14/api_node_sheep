@@ -1,5 +1,5 @@
 import { prisma } from "../../../../prisma/client";
-import { UpdateSheepDTO } from "../../dtos/UpdateSheepDTO";
+import { UpdateSheepDTO } from "../../dtos/SheepDTO";
 
 import { AppError } from "../../../../errors/AppError";
 

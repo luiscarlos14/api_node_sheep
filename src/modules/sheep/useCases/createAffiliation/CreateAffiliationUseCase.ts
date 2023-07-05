@@ -1,5 +1,5 @@
 import {prisma} from "../../../../prisma/client";
-import {CreateAffiliationDTO} from "../../dtos/CreateAffiliationDTO";
+import {CreateAffiliationDTO} from "../../dtos/AffiliationDTO";
 
 import { Affiliation } from "@prisma/client";
 

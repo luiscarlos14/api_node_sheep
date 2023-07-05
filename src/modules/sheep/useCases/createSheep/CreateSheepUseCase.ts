@@ -1,5 +1,5 @@
 import { prisma } from "../../../../prisma/client";
-import { CreateSheepDTO } from "../../dtos/CreateSheepDTO";
+import { CreateSheepDTO } from "../../dtos/SheepDTO";
 
 import { Sheep } from '@prisma/client';
 

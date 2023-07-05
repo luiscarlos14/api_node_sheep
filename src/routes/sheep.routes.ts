@@ -12,6 +12,7 @@ import { GetSheepHaggardController } from "../modules/sheep/useCases/getSheepHag
 import { GetSheepVaccinesAllController } from "../modules/sheep/useCases/getSheepVaccinesAll/GetSheepVaccinesAllController";
 
 import { UpdateSheepController } from "../modules/sheep/useCases/updateSheep/UpdateSheepController";
+import { UpdateVaccinesController } from "../modules/sheep/useCases/updateSheepVaccines/UpdateVaccinesController";
 
 import { authenticateToken } from '../utilities/authenticateToken';
 
@@ -19,12 +20,16 @@ const createSheepController = new CreateSheepController();
 const createAffiliationController = new CreateAffiliationController();
 const createVaccinesController = new CreateVaccinesController();
 const createHaggardController = new CreateHaggardController();
+
 const getSheepsController = new GetSheepsController();
 const getSheepController = new GetSheepController();
 const getSheepVaccinesController = new GetSheepVaccinesController();
 const getSheepVaccinesAllController = new GetSheepVaccinesAllController();
 const getSheepHaggardController = new GetSheepHaggardController();
+
 const updateSheepController = new UpdateSheepController();
+const updateVaccinesController = new UpdateVaccinesController();
+
 
 
 const sheepRouter = Router();
@@ -40,6 +45,7 @@ sheepRouter.post("/affiliation", createAffiliationController.handle);
 sheepRouter.post("/vaccines", createVaccinesController.handle);
 sheepRouter.get("/vaccines/all", getSheepVaccinesAllController.handle);
 sheepRouter.get("/vaccines/:id", getSheepVaccinesController.handle);
+sheepRouter.put("/vaccines", updateVaccinesController.handle);
 
 sheepRouter.post("/haggard", createHaggardController.handle);
 sheepRouter.get("/haggard/:id", getSheepHaggardController.handle);
